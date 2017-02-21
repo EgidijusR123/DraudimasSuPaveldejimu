@@ -1,0 +1,6 @@
+c:\users\egidijus\documents\visual studio 2015\Projects\DraudimasSuPaveldejimu\DraudimasSuPaveldejimu\bin\Debug\DraudimasSuPaveldejimu.exe.config
+c:\users\egidijus\documents\visual studio 2015\Projects\DraudimasSuPaveldejimu\DraudimasSuPaveldejimu\bin\Debug\DraudimasSuPaveldejimu.exe
+c:\users\egidijus\documents\visual studio 2015\Projects\DraudimasSuPaveldejimu\DraudimasSuPaveldejimu\bin\Debug\DraudimasSuPaveldejimu.pdb
+c:\users\egidijus\documents\visual studio 2015\Projects\DraudimasSuPaveldejimu\DraudimasSuPaveldejimu\obj\Debug\DraudimasSuPaveldejimu.exe
+c:\users\egidijus\documents\visual studio 2015\Projects\DraudimasSuPaveldejimu\DraudimasSuPaveldejimu\obj\Debug\DraudimasSuPaveldejimu.pdb
+C:\Users\Egidijus\Documents\Visual Studio 2015\Projects\DraudimasSuPaveldejimu\DraudimasSuPaveldejimu\obj\Debug\DraudimasSuPaveldejimu.csprojResolveAssemblyReference.cache
