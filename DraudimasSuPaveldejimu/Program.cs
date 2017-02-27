@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DraudimasSuPaveldejimu
 {
@@ -71,78 +68,62 @@ namespace DraudimasSuPaveldejimu
             }
             return Math.Round((kof1 + kof2), 1);
         }
-        private void IsvedimoBandymas(Automoblis[]automob,Motociklas[]motocikl,Zmogus[]zmogisauto,Zmogus[]zmogimoto, List <DraudimoKompanijos>darudimai, double[] autokoef,double[] motokoef)
-        {
-            Console.ForegroundColor = ConsoleColor.White;
-            int i = 0;
-            foreach (var auto in automob)
-            {
-                Console.WriteLine(auto.AutomobiliotMarke+" "+auto.AutomobilioModelis+" "+autokoef[i]+" "+zmogisauto[i].ZmogausVardas+" "+zmogisauto[i].ZmogausAmzius);
-                i++;
-            }
-            i= 0;
-            foreach (var moto in motocikl)
-            {
-                Console.WriteLine(moto.MotocikloTipas+" "+moto.MaxGreitis+" "+motokoef[i]+" "+zmogimoto[i].ZmogausVardas+" "+zmogimoto[i].ZmogausAmzius);
-                i++;
-            }
-         
-        }
+
         private void Parinkimas(Zmogus[] zmogusauto, Zmogus[] zmogusmoto, List<DraudimoKompanijos> draudimai, double[] koefauto, double[] koefmoto,Automoblis[] automobil,Motociklas[] motocikl)
         {
             int i = 0;
             var lengthauto = zmogusauto.Length;
-            foreach (var zmog in zmogusauto)
-            {
                 for (int j = 0;j< lengthauto; j++)
                 {
+                Console.WriteLine("---------------------------------------------------------------------------");
                     while (i != 4)
                     {
-                        if (zmog.ZmogausAmzius < draudimai[i].DraudziamojoMinAmzius || zmog.ZmogausAmzius > draudimai[i].DraudziamojoMaxAmzius)
+                        if (zmogusauto[j].ZmogausAmzius < draudimai[i].DraudziamojoMinAmzius || zmogusauto[j].ZmogausAmzius > draudimai[i].DraudziamojoMaxAmzius)
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("{0} nedraudzia!", draudimai[i].DraudimoPavadinimas);
                             Console.ForegroundColor = ConsoleColor.White;
                         }
-                        else if (zmog.ArZmogusTuriNuolaidu == draudimai[i].ArTeikiamaNuolaida && zmog.ArZmogusTuriNuolaidu == true)
+                        else if (zmogusauto[j].ArZmogusTuriNuolaidu == draudimai[i].ArTeikiamaNuolaida && zmogusauto[j].ArZmogusTuriNuolaidu == true)
                         {
-                            Console.WriteLine("{2}. {1} draus-{3} ir kaina bus {0} EUR.", (draudimai[i].DraudimoKaina * koefauto[j]), draudimai[i].DraudimoPavadinimas, i,automobil[j].AutomobiliotMarke);
+                            Console.WriteLine("{2}. {1} draus-{3}, kurio savininkas {4} ir kaina bus {0} EUR.", Math.Round((draudimai[i].DraudimoKaina * koefauto[j]),1), draudimai[i].DraudimoPavadinimas, (i+1),automobil[j].AutomobiliotMarke,zmogusauto[j].ZmogausVardas);
                         }
                         else
                         {
-                            Console.WriteLine("{2}. {1} draus-{3} ir kaina bus {0} EUR.", (draudimai[i].DraudimoKaina * koefauto[j]), draudimai[i].DraudimoPavadinimas, i, automobil[j].AutomobiliotMarke);
+                            Console.WriteLine("{2}. {1} draus-{3}, kurio savininkas {4} ir kaina bus {0} EUR.", Math.Round((draudimai[i].DraudimoKaina * koefauto[j]),1), draudimai[i].DraudimoPavadinimas, (i+1), automobil[j].AutomobiliotMarke, zmogusauto[j].ZmogausVardas);
                         }
                         i++;
                     }
+                Console.WriteLine("---------------------------------------------------------------------------");
+                i = 0;
                 }
-            }
-            i = 0;
+            
             var lengthmoto = zmogusmoto.Length;
-            foreach (var zmog in zmogusmoto)
-            {
-                for (int j = 0; j < lengthmoto; j++)
+
+            for (int k = 0; k < lengthmoto; k++)
                 {
-                    while (i != 4)
+                Console.WriteLine("---------------------------------------------------------------------------");
+                while (i != 4)
                     {
-                        if (zmog.ZmogausAmzius < draudimai[i].DraudziamojoMinAmzius || zmog.ZmogausAmzius > draudimai[i].DraudziamojoMaxAmzius)
+                        if (zmogusmoto[k].ZmogausAmzius < draudimai[i].DraudziamojoMinAmzius || zmogusmoto[k].ZmogausAmzius > draudimai[i].DraudziamojoMaxAmzius)
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("{0} nedraudzia!", draudimai[i].DraudimoPavadinimas);
                             Console.ForegroundColor = ConsoleColor.White;
                         }
-                        else if (zmog.ArZmogusTuriNuolaidu == draudimai[i].ArTeikiamaNuolaida && zmog.ArZmogusTuriNuolaidu == true)
+                        else if (zmogusmoto[k].ArZmogusTuriNuolaidu == draudimai[i].ArTeikiamaNuolaida && zmogusmoto[k].ArZmogusTuriNuolaidu == true)
                         {
-                            Console.WriteLine("{2}. {1} draus-{3} ir kaina bus {0} EUR.", (draudimai[i].DraudimoKaina * koefmoto[j]), draudimai[i].DraudimoPavadinimas, i,motocikl[j].MotocikloTipas);
+                            Console.WriteLine("{2}. {1} draus-{3}, kurio savininkas {4} ir kaina bus {0} EUR.", Math.Round((draudimai[i].DraudimoKaina * koefmoto[k]),1), draudimai[i].DraudimoPavadinimas, (i+1),motocikl[k].MotocikloTipas,zmogusmoto[k].ZmogausVardas);
                         }
                         else
                         {
-                            Console.WriteLine("{2}. {1} draus-{3} ir kaina bus {0} EUR.", (draudimai[i].DraudimoKaina * koefmoto[j]), draudimai[i].DraudimoPavadinimas, i,motocikl[j].MotocikloTipas);
+                            Console.WriteLine("{2}. {1} draus-{3}, kurio savininkas {4} ir kaina bus {0} EUR.", Math.Round((draudimai[i].DraudimoKaina * koefmoto[k]),1), draudimai[i].DraudimoPavadinimas, (i+1),motocikl[k].MotocikloTipas, zmogusmoto[k].ZmogausVardas);
                         }
                         i++;
                     }
+                Console.WriteLine("---------------------------------------------------------------------------");
+                i = 0;
                 }
-            }
-
         }
 
         static void Main(string[] args)
@@ -163,7 +144,6 @@ namespace DraudimasSuPaveldejimu
             Zmogus[] zmogusauto = new Zmogus[KiekAuto];
             programele.InformacijosIvedimasAuto(automobilis,zmogusauto,koeficientasAuto,KiekAuto);
 
-
             Console.WriteLine("Iveskite kiek bus motociklu");
             var KiekMoto = Convert.ToInt32(Console.ReadLine());
             Motociklas[] motociklas = new Motociklas[KiekMoto];
@@ -173,13 +153,7 @@ namespace DraudimasSuPaveldejimu
 
             double[] koefBendr = new double[KiekAuto + KiekMoto];
 
-         /*   var listKoef = new List<double>();
-            listKoef.AddRange(koeficientasAuto);
-            listKoef.AddRange(koeficientasMoto);*/
-
-            programele.Parinkimas(zmogusauto, zmogusmoto, Drauduuumas,koeficientasAuto,koeficientasMoto,automobilis,motociklas);
-
-       //     programele.IsvedimoBandymas(automobilis, motociklas,zmogusauto, zmogusmoto, Drauduuumas, koeficientasAuto, koeficientasMoto);
+            programele.Parinkimas(zmogusauto, zmogusmoto, Drauduuumas, koeficientasAuto, koeficientasMoto, automobilis, motociklas);
 
             Console.ReadKey();
         }
